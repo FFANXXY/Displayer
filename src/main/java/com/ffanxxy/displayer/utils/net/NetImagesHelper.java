@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class NetImagesHelper {
-    public CompletableFuture<byte[]> downloadImage(String URL) {
+    public static CompletableFuture<byte[]> downloadImage(String URL) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         CompletableFuture<byte[]> resultData = new CompletableFuture<>();
 
@@ -69,7 +69,7 @@ public class NetImagesHelper {
     }
 
     // 从Content-Disposition或URL中提取文件名
-    private String extractFileName(HttpURLConnection conn, URL url) {
+    private static String extractFileName(HttpURLConnection conn, URL url) {
         String fileName = null;
 
         // 尝试从Content-Disposition头获取文件名
@@ -102,7 +102,7 @@ public class NetImagesHelper {
     }
 
     // 从Content-Type提取文件扩展名
-    private String extractFileExtension(String contentType) {
+    private static String extractFileExtension(String contentType) {
         if (contentType == null) return "bin";
 
         if (contentType.contains("jpeg")) return "jpg";
@@ -115,7 +115,7 @@ public class NetImagesHelper {
     }
 
     // 验证是否是支持的图片类型
-    private boolean isValidImageType(String contentType) {
+    private static boolean isValidImageType(String contentType) {
         return contentType != null && (
                 contentType.startsWith("image/jpeg") ||
                         contentType.startsWith("image/png") ||
@@ -126,7 +126,7 @@ public class NetImagesHelper {
     }
 
     // 安全读取流数据
-    private byte[] readStream(InputStream is, int expectedSize) throws IOException {
+    private static byte[] readStream(InputStream is, int expectedSize) throws IOException {
         // 创建合适大小的缓冲区
         int bufferSize = expectedSize > 0 ? expectedSize : 4096;
         ByteArrayOutputStream buffer = new ByteArrayOutputStream(bufferSize);
