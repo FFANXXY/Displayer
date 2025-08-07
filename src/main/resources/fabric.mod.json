@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "displayer",
+	"version": "${version}",
+	"name": "Displayer",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/displayer/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.ffanxxy.displayer.Displayer"
+		],
+		"client": [
+			"com.ffanxxy.displayer.DisplayerClient"
+		],
+		"fabric-datagen": [
+			"com.ffanxxy.displayer.DisplayerDataGenerator"
+		]
+	},
+	"mixins": [
+		"displayer.mixins.json",
+		{
+			"config": "displayer.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
